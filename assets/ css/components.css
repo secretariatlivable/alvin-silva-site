@@ -1,0 +1,116 @@
+/*
+ * A. Silva Innovations — Shared component layer
+ *
+ * Dependency-free shared primitives. The existing page-level design tokens and
+ * visual system remain authoritative; these classes only fill the shared
+ * component layer referenced by production pages.
+ */
+
+:where(.as-card, .glass-card, .surface-card) {
+  border: 1px solid var(--line, rgba(10,20,60,.16));
+  border-radius: var(--radius, 14px);
+  background: var(--glass-strong, #fff);
+  box-shadow: var(--shadow-1, 0 8px 32px rgba(20,30,60,.10));
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.as-card { padding: 1.25rem; }
+
+:where(.as-btn, .btn-primary, .btn-secondary, .btn-ghost) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+  min-height: 2.75rem;
+  padding: .65rem .95rem;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  font-family: var(--font-cond, system-ui, sans-serif);
+  font-weight: 700;
+  line-height: 1.1;
+  text-decoration: none;
+  transition: transform .2s var(--ease, ease), box-shadow .2s var(--ease, ease),
+    background-color .2s ease, border-color .2s ease;
+}
+
+:where(.as-btn, .btn-primary, .btn-secondary, .btn-ghost):hover {
+  transform: translateY(-1px);
+}
+
+.btn-primary {
+  background: var(--blue, #0057c2);
+  color: #fff;
+}
+
+.btn-secondary {
+  border-color: var(--line, rgba(10,20,60,.16));
+  background: var(--glass, rgba(255,255,255,.5));
+  color: var(--text, #0d1224);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--link, #0052cc);
+}
+
+:where(.as-badge, .as-tag, .as-pill) {
+  display: inline-flex;
+  align-items: center;
+  gap: .35rem;
+  min-height: 1.7rem;
+  padding: .25rem .65rem;
+  border: 1px solid var(--line, rgba(10,20,60,.16));
+  border-radius: 999px;
+  background: var(--pill-bg, rgba(90,110,160,.1));
+  color: var(--text-2, #2b3350);
+  font-family: var(--font-cond, system-ui, sans-serif);
+  font-size: .84rem;
+  font-weight: 600;
+}
+
+.as-cluster {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .75rem;
+}
+
+.as-stack { display: flex; flex-direction: column; }
+.as-stack-sm { gap: .5rem; }
+.as-stack-md { gap: 1rem; }
+.as-stack-lg { gap: 1.5rem; }
+
+.as-grid {
+  display: grid;
+  gap: clamp(1rem, 2vw, 1.5rem);
+}
+
+.as-grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.as-grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.as-grid-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+
+.as-muted { color: var(--text-3, rgba(20,26,46,.72)); }
+.as-divider { height: 1px; border: 0; background: var(--divider, rgba(10,20,60,.12)); }
+
+:where(.as-btn, .btn-primary, .btn-secondary, .btn-ghost, a, button, input, textarea, select, summary):focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--accent, #0069a8) 72%, white);
+  outline-offset: 3px;
+}
+
+@media (max-width: 900px) {
+  .as-grid-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .as-grid-3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 640px) {
+  .as-grid-2,
+  .as-grid-3,
+  .as-grid-4 { grid-template-columns: 1fr; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :where(.as-btn, .btn-primary, .btn-secondary, .btn-ghost) {
+    transition: none;
+  }
+}
