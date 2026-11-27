@@ -1,0 +1,13 @@
+{
+  "package": "alvin-silva-production-update",
+  "review_date": "2026-08-21",
+  "architecture": "static-html-css-vanilla-js",
+  "changes": [
+    "Add shared component stylesheet",
+    "Add visualization stylesheet",
+    "Add dependency-aware static-site validator",
+    "Strengthen GitHub Actions validation",
+    "Repair malformed visualization stylesheet links in index.html and portfolio.html"
+  ],
+  "design_preserved": true
+}
