@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Career Intelligence &amp; Opportunity Management | Alvin M. Silva, MDM</title>
+<meta name="description" content="Private career workspace for Alvin M. Silva, MDM: explainable opportunity assessment, eligibility checks, evidence-backed documents, application pipeline, development roadmap and career analytics.">
+<meta name="author" content="Alvin M. Silva, MDM">
+<!-- Private productivity tool, not a public marketing page: keep it out of
+     search indexes. Private records live in this browser (or the optional
+     private backend), never in the page or the service-worker cache. -->
+<meta name="robots" content="noindex, nofollow">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<link rel="canonical" href="https://alvin-silva.asilvainnovations.com/career-automation">
+<meta name="theme-color" content="#0a0e27">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/logo-32.png">
+<link rel="apple-touch-icon" href="assets/logo-180.png">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Poppins:wght@300;400;500;600&family=Roboto+Condensed:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/components.css">
+<link rel="stylesheet" href="assets/css/core.css">
+<link rel="stylesheet" href="assets/css/visualizations.css">
+<style>
+/* ============================================================
+   DESIGN TOKENS
+   ============================================================ */
+:root {
+  --navy:#f4f6fb; --navy-2:#eef1f8; --card:#ffffff;
+  --blue:#0057c2; --sky:#0069a8; --gold:#8a6d00; --green:#0f7d51; --violet:#5b34c9; --red:#c62828;
+  --link:#0052cc; --link-hover:#003d99;
+  --text:#0d1224; --text-2:#2b3350; --text-3:rgba(20,26,46,.72);
+  --glass:linear-gradient(135deg, rgba(10,20,60,.06), rgba(10,20,60,.025));
+  --glass-strong:linear-gradient(135deg, rgba(255,255,255,.94), rgba(240,244,252,.9));
+  --line:rgba(10,20,60,.16); --line-gold:rgba(140,110,0,.4); --divider:rgba(10,20,60,.12);
+  --radius:14px;
+  --on-gold:#ffffff;
+  --header-bg:rgba(244,246,251,.9); --header-border:rgba(0,102,255,.3);
+  --footer-bg:rgba(255,255,255,.94); --footer-border:rgba(0,102,255,.25);
+  --mobile-menu-bg:linear-gradient(160deg,#ffffff,#eef1fb);
+  --input-bg:rgba(255,255,255,.85); --pill-bg:rgba(90,110,160,.1); --pill-bg-hover:rgba(90,110,160,.18);
+  --font-display:'Montserrat',system-ui,sans-serif; --font-body:'Poppins',system-ui,sans-serif;
+  --font-cond:'Roboto Condensed',system-ui,sans-serif; --font-mono:'JetBrains Mono',ui-monospace,monospace;
+  --shadow-1:0 8px 32px rgba(20,30,60,.10), inset 0 1px 0 rgba(255,255,255,.6);
+  --shadow-2:0 18px 48px rgba(20,30,60,.14), 0 6px 18px rgba(0,102,255,.12);
+  --ease:cubic-bezier(.22,.8,.28,1);
+  --body-bg:radial-gradient(1200px 600px at 85% -5%, rgba(0,102,255,.08), transparent 60%), radial-gradient(900px 500px at -10% 30%, rgba(0,191,255,.06), transparent 55%), linear-gradient(160deg, #f4f6fb 0%, #eef1fb 48%, #e9ecf7 100%);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --navy:#0a0e27; --navy-2:#0d1224; --card:#1a1f3a;
+    --blue:#0066FF; --sky:#00BFFF; --gold:#FFD700; --green:#34D399; --violet:#A78BFA; --red:#F87171;
+    --link:#4db8ff; --link-hover:#8ad4ff;
+    --text:#ffffff; --text-2:#e0e6ed; --text-3:rgba(224,230,237,.62);
+    --glass:linear-gradient(135deg, rgba(255,255,255,.10), rgba(255,255,255,.03));
+    --glass-strong:linear-gradient(135deg, rgba(10,20,60,.62), rgba(10,14,39,.78));
+    --line:rgba(255,255,255,.13); --line-gold:rgba(255,215,0,.28); --divider:rgba(255,255,255,.09);
+    --on-gold:#0a0e27;
+    --header-bg:rgba(10,14,39,.86); --header-border:rgba(0,102,255,.45);
+    --footer-bg:rgba(6,9,24,.96); --footer-border:rgba(0,102,255,.4);
+    --mobile-menu-bg:linear-gradient(160deg,#0d1430,#070b1d);
+    --input-bg:rgba(10,16,42,.7); --pill-bg:rgba(255,255,255,.06); --pill-bg-hover:rgba(255,255,255,.12);
+    --shadow-1:0 8px 32px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.16);
+    --shadow-2:0 18px 48px rgba(0,0,0,.55), 0 6px 18px rgba(0,102,255,.25);
+    --body-bg:radial-gradient(1200px 600px at 85% -5%, rgba(0,102,255,.20), transparent 60%), radial-gradient(900px 500px at -10% 30%, rgba(0,191,255,.10), transparent 55%), linear-gradient(160deg, #0a0e27 0%, #0b1030 48%, #070b1d 100%);
+  }
+}
+html[data-theme="dark"] {
+  --navy:#0a0e27; --navy-2:#0d1224; --card:#1a1f3a;
+  --blue:#0066FF; --sky:#00BFFF; --gold:#FFD700; --green:#34D399; --violet:#A78BFA; --red:#F87171;
+  --link:#4db8ff; --link-hover:#8ad4ff;
+  --text:#ffffff; --text-2:#e0e6ed; --text-3:rgba(224,230,237,.62);
+  --glass:linear-gradient(135deg, rgba(255,255,255,.10), rgba(255,255,255,.03));
+  --glass-strong:linear-gradient(135deg, rgba(10,20,60,.62), rgba(10,14,39,.78));
+  --line:rgba(255,255,255,.13); --line-gold:rgba(255,215,0,.28); --divider:rgba(255,255,255,.09);
+  --on-gold:#0a0e27;
+  --header-bg:rgba(10,14,39,.86); --header-border:rgba(0,102,255,.45);
+  --footer-bg:rgba(6,9,24,.96); --footer-border:rgba(0,102,255,.4);
+  --mobile-menu-bg:linear-gradient(160deg,#0d1430,#070b1d);
+  --input-bg:rgba(10,16,42,.7); --pill-bg:rgba(255,255,255,.06); --pill-bg-hover:rgba(255,255,255,.12);
+  --shadow-1:0 8px 32px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.16);
+  --shadow-2:0 18px 48px rgba(0,0,0,.55), 0 6px 18px rgba(0,102,255,.25);
+  --body-bg:radial-gradient(1200px 600px at 85% -5%, rgba(0,102,255,.20), transparent 60%), radial-gradient(900px 500px at -10% 30%, rgba(0,191,255,.10), transparent 55%), linear-gradient(160deg, #0a0e27 0%, #0b1030 48%, #070b1d 100%);
+}
+html[data-theme="light"] {
+  --navy:#f4f6fb; --navy-2:#eef1f8; --card:#ffffff;
+  --blue:#0057c2; --sky:#0069a8; --gold:#8a6d00; --green:#0f7d51; --violet:#5b34c9; --red:#c62828;
+  --link:#0052cc; --link-hover:#003d99;
+  --text:#0d1224; --text-2:#2b3350; --text-3:rgba(20,26,46,.72);
+  --glass:linear-gradient(135deg, rgba(10,20,60,.06), rgba(10,20,60,.025));
+  --glass-strong:linear-gradient(135deg, rgba(255,255,255,.94), rgba(240,244,252,.9));
+  --line:rgba(10,20,60,.16); --line-gold:rgba(140,110,0,.4); --divider:rgba(10,20,60,.12);
+  --on-gold:#ffffff;
+  --header-bg:rgba(244,246,251,.9); --header-border:rgba(0,102,255,.3);
+  --footer-bg:rgba(255,255,255,.94); --footer-border:rgba(0,102,255,.25);
+  --mobile-menu-bg:linear-gradient(160deg,#ffffff,#eef1fb);
+  --input-bg:rgba(255,255,255,.85); --pill-bg:rgba(90,110,160,.1); --pill-bg-hover:rgba(90,110,160,.18);
+  --shadow-1:0 8px 32px rgba(20,30,60,.10), inset 0 1px 0 rgba(255,255,255,.6);
+  --shadow-2:0 18px 48px rgba(20,30,60,.14), 0 6px 18px rgba(0,102,255,.12);
+  --body-bg:radial-gradient(1200px 600px at 85% -5%, rgba(0,102,255,.08), transparent 60%), radial-gradient(900px 500px at -10% 30%, rgba(0,191,255,.06), transparent 55%), linear-gradient(160deg, #f4f6fb 0%, #eef1fb 48%, #e9ecf7 100%);
+}
+
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:92px;--a11y-scale:1}
+body{font-family:var(--font-body);font-weight:400;line-height:1.65;font-size:calc(1rem*var(--a11y-scale,1));color:var(--text);background:var(--body-bg);background-attachment:fixed;min-height:100vh;overflow-x:hidden}
+body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;background:url('assets/logo-512.png') center/ min(78vw,560px) no-repeat;opacity:.045}
+main,header,footer{position:relative;z-index:1}
+img{max-width:100%;display:block}
+h1,h2,h3,h4{font-family:var(--font-display);line-height:1.15;letter-spacing:-.01em}
+a{color:var(--link)}a:hover{color:var(--link-hover)}
+button{font-family:inherit}
+::selection{background:rgba(255,215,0,.35);color:var(--text)}
+:focus-visible{outline:3px solid var(--gold);outline-offset:2px;border-radius:4px}
+.skip-link{position:absolute;top:-48px;left:8px;z-index:12000;background:var(--gold);color:var(--on-gold);font-family:var(--font-display);font-weight:700;padding:.6rem 1.1rem;border-radius:0 0 10px 10px;text-decoration:none;transition:top .25s}
+.skip-link:focus{top:0}
+
+.wrap{width:100%;max-width:1280px;margin:0 auto;padding:0 clamp(1rem,4vw,2.5rem)}
+.section{padding:clamp(3rem,7vw,5rem) 0;position:relative}
+.kicker{font-family:var(--font-cond);font-size:.8rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--sky);margin-bottom:.9rem;display:flex;align-items:center;gap:.7rem;justify-content:center}
+.kicker::before,.kicker::after{content:'';height:1px;width:34px;background:linear-gradient(90deg,transparent,var(--sky))}
+.kicker::after{transform:scaleX(-1)}
+.section-title{font-size:clamp(1.7rem,4.6vw,2.6rem);font-weight:800;text-align:center;margin-bottom:.9rem}
+.grad-text,.section-title .hl{background:linear-gradient(92deg,var(--sky) 0%,var(--blue) 45%,var(--gold) 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;filter:drop-shadow(0 1px 3px rgba(0,0,0,.12))}
+.section-sub{text-align:center;color:var(--text-3);max-width:720px;margin:0 auto clamp(2rem,5vw,3rem);font-weight:300}
+
+.glass{background:var(--glass);border:1px solid var(--line);backdrop-filter:blur(18px) saturate(160%);-webkit-backdrop-filter:blur(18px) saturate(160%);box-shadow:var(--shadow-1)}
+.glass-strong{background:var(--glass-strong);border:1px solid var(--line);backdrop-filter:blur(24px) saturate(180%);-webkit-backdrop-filter:blur(24px) saturate(180%);box-shadow:var(--shadow-1)}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.55rem;font-family:var(--font-display);font-weight:700;font-size:.92rem;letter-spacing:.03em;padding:.85rem 1.7rem;border-radius:999px;border:2px solid transparent;cursor:pointer;text-decoration:none;transition:transform .25s var(--ease),box-shadow .25s,background .25s,color .25s;min-height:48px}
+.btn svg{width:17px;height:17px;flex:none}
+.btn-primary{background:linear-gradient(135deg,var(--blue),var(--sky));color:#fff;box-shadow:0 8px 24px rgba(0,102,255,.35)}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 14px 34px rgba(0,191,255,.45)}
+.btn-gold{background:transparent;color:var(--gold);border-color:var(--gold)}
+.btn-gold:hover{background:var(--gold);color:var(--on-gold);transform:translateY(-3px);box-shadow:0 12px 30px rgba(255,215,0,.35)}
+.btn-ghost{background:var(--pill-bg);color:var(--text);border-color:var(--line)}
+.btn-ghost:hover{background:var(--pill-bg-hover);transform:translateY(-2px)}
+.btn-sm{padding:.5rem 1.05rem;font-size:.8rem;min-height:40px}
+
+/* ============================================================
+   CIOMS WORKSPACE
+   ============================================================ */
+.sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.ws-hero{background:#0a0e27;color:#fff;position:relative;overflow:hidden}
+.ws-hero::after{content:'';position:absolute;inset:0;background:radial-gradient(900px 380px at 85% -10%,rgba(0,102,255,.32),transparent 60%),radial-gradient(700px 300px at -5% 110%,rgba(255,215,0,.12),transparent 60%);pointer-events:none}
+.ws-hero-inner{position:relative;z-index:1;padding:clamp(2.6rem,7vw,4.2rem) 0 clamp(1.6rem,4vw,2.4rem)}
+.ws-crumb{display:inline-flex;align-items:center;gap:.45rem;font-family:var(--font-cond);font-size:.76rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.6);text-decoration:none;margin-bottom:.9rem}
+.ws-crumb:hover{color:#FFD700}
+.ws-crumb svg{width:13px;height:13px}
+.ws-hero .kicker{justify-content:flex-start;color:#4db8ff}
+.ws-hero .kicker::before{display:none}
+.ws-hero h1{font-size:clamp(1.7rem,5vw,2.7rem);font-weight:900;margin-bottom:.6rem;color:#fff}
+.ws-hero h1 .grad-text{background:linear-gradient(92deg,#4db8ff 0%,#5c8aff 45%,#FFD700 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.ws-hero p{color:rgba(255,255,255,.8);max-width:820px;font-weight:300}
+.ws-status{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.1rem}
+.ws-chip{display:inline-flex;align-items:center;gap:.4rem;padding:.3rem .75rem;border-radius:999px;font-family:var(--font-cond);font-size:.74rem;font-weight:600;letter-spacing:.04em;border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.06);color:rgba(255,255,255,.9)}
+.ws-chip::before{content:'';width:7px;height:7px;border-radius:50%;background:currentColor;opacity:.85}
+.ws-chip.ok{color:#34D399;border-color:rgba(52,211,153,.5)}
+.ws-chip.warn{color:#FFD700;border-color:rgba(255,215,0,.5)}
+.ws-chip.bad{color:#F87171;border-color:rgba(248,113,113,.55)}
+.ws-chip.info{color:#4db8ff;border-color:rgba(77,184,255,.5)}
+
+.ws-tabs-wrap{position:sticky;top:var(--shl-header-h,64px);z-index:50;background:var(--header-bg);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.ws-tabs{display:flex;gap:.25rem;overflow-x:auto;scrollbar-width:thin;padding:.45rem 0}
+.ws-tab{flex:none;display:inline-flex;align-items:center;gap:.4rem;padding:.55rem .9rem;border-radius:10px;border:1px solid transparent;background:none;color:var(--text-2);font-family:var(--font-cond);font-weight:600;font-size:.88rem;letter-spacing:.04em;cursor:pointer;min-height:42px}
+.ws-tab:hover{background:var(--pill-bg);color:var(--text)}
+.ws-tab[aria-selected="true"]{background:var(--pill-bg-hover);border-color:var(--line-gold);color:var(--gold)}
+.ws-tab .ws-count{font-family:var(--font-mono);font-size:.7rem;padding:.05rem .4rem;border-radius:999px;background:var(--pill-bg);color:var(--text-3)}
+.ws-panel{padding:clamp(1.6rem,4vw,2.6rem) 0 3rem}
+.ws-panel[hidden]{display:none}
+.ws-panel h2{font-size:clamp(1.3rem,3.4vw,1.75rem);font-weight:800;margin-bottom:.35rem}
+.ws-lead{color:var(--text-3);max-width:860px;margin-bottom:1.4rem;font-weight:300}
+.ws-card{border-radius:16px;padding:clamp(1.1rem,2.6vw,1.6rem);margin-bottom:1.1rem;background:var(--glass);border:1px solid var(--line);box-shadow:var(--shadow-1)}
+.ws-card h3{font-size:1.05rem;font-weight:700;margin-bottom:.8rem;display:flex;align-items:center;gap:.5rem;flex-wrap:wrap}
+.ws-card h3 svg{width:18px;height:18px;color:var(--sky)}
+.ws-card h4,.ws-dialog h4{font-family:var(--font-cond);font-size:.76rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin:1.1rem 0 .55rem}
+.ws-grid{display:grid;gap:1rem}
+.ws-grid.cols-2{grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr))}
+.ws-grid.cols-3{grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr))}
+.ws-grid.cols-4{grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr))}
+.ws-kpi{padding:1rem 1.1rem;border-radius:14px;border:1px solid var(--line);background:var(--card)}
+.ws-kpi strong{display:block;font-family:var(--font-display);font-size:2rem;font-weight:800;line-height:1.05;color:var(--sky)}
+.ws-kpi span{font-size:.8rem;color:var(--text-3)}
+.ws-kpi small{display:block;font-size:.72rem;color:var(--text-3);margin-top:.25rem}
+.ws-muted{color:var(--text-3);font-size:.86rem}
+.ws-small{font-size:.78rem;color:var(--text-3)}
+.ws-note{padding:.75rem .9rem;border-radius:10px;border-left:3px solid var(--sky);background:var(--pill-bg);font-size:.85rem;margin:.6rem 0}
+.ws-note.warn{border-color:var(--gold)}
+.ws-note.bad{border-color:var(--red)}
+.ws-note.ok{border-color:var(--green)}
+
+/* forms */
+.ws-label{display:block;font-family:var(--font-cond);font-size:.74rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--sky);margin-bottom:.35rem}
+.ws-input,.ws-select,.ws-textarea{width:100%;padding:.7rem .85rem;border-radius:10px;border:1.5px solid var(--line);background:var(--input-bg);color:var(--text);font-family:var(--font-body);font-size:.92rem;transition:border-color .2s,box-shadow .2s}
+.ws-textarea{line-height:1.65;resize:vertical;min-height:120px}
+.ws-input:focus,.ws-select:focus,.ws-textarea:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(255,215,0,.18)}
+.ws-field{margin-bottom:.85rem}
+.ws-row{display:flex;flex-wrap:wrap;gap:.6rem;align-items:center}
+.ws-row.end{justify-content:flex-end}
+.ws-row .grow{flex:1;min-width:200px}
+.ws-check{display:flex;align-items:flex-start;gap:.55rem;font-size:.88rem;cursor:pointer}
+.ws-check input{margin-top:.25rem;accent-color:var(--gold);width:16px;height:16px;flex:none}
+.btn[disabled]{opacity:.55;cursor:not-allowed;transform:none!important}
+.btn-danger{background:transparent;color:var(--red);border-color:var(--red)}
+.btn-danger:hover{background:var(--red);color:#fff}
+
+/* chips & badges */
+.ws-badge{display:inline-flex;align-items:center;gap:.3rem;padding:.12rem .55rem;border-radius:999px;font-family:var(--font-cond);font-size:.7rem;font-weight:700;letter-spacing:.05em;border:1px solid var(--line);background:var(--pill-bg);color:var(--text-2);white-space:nowrap}
+.ws-badge.verified,.ws-badge.met,.ws-badge.high,.ws-badge.pursue{color:var(--green);border-color:var(--green)}
+.ws-badge.documented,.ws-badge.likely,.ws-badge.medium,.ws-badge.user{color:var(--sky);border-color:var(--sky)}
+.ws-badge.self-reported,.ws-badge.verify,.ws-badge.manual,.ws-badge.low,.ws-badge.unverified,.ws-badge.minor{color:var(--gold);border-color:var(--gold)}
+.ws-badge.inferred,.ws-badge.missing,.ws-badge.unknown{color:var(--text-3);border-style:dashed}
+.ws-badge.not,.ws-badge.expired,.ws-badge.blocking,.ws-badge.bad{color:var(--red);border-color:var(--red)}
+.ws-badge.major{color:#f59e0b;border-color:#f59e0b}
+
+/* scores */
+.ws-scores{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));margin:.4rem 0 1rem}
+.ws-score{padding:1rem;border-radius:14px;border:1px solid var(--line);background:var(--card);text-align:center}
+.ws-score .num{font-family:var(--font-display);font-size:2.4rem;font-weight:800;line-height:1}
+.ws-score .lbl{font-family:var(--font-cond);font-size:.76rem;letter-spacing:.1em;text-transform:uppercase;color:var(--text-3);margin-top:.3rem}
+.ws-score .sub{font-size:.76rem;color:var(--text-3);margin-top:.35rem}
+.tone-high{color:var(--green)}.tone-mid{color:var(--gold)}.tone-low{color:var(--red)}
+.ws-bar{display:grid;grid-template-columns:minmax(150px,1.1fr) 2fr 44px;gap:.7rem;align-items:center;padding:.42rem 0;border-bottom:1px solid var(--divider);font-size:.86rem}
+.ws-bar:last-child{border-bottom:none}
+.ws-bar .track{height:9px;border-radius:999px;background:var(--pill-bg);overflow:hidden}
+.ws-bar .fill{height:100%;border-radius:999px;background:linear-gradient(90deg,var(--blue),var(--sky))}
+.ws-bar .fill.tone-high{background:linear-gradient(90deg,var(--green),#34D399)}
+.ws-bar .fill.tone-mid{background:linear-gradient(90deg,var(--gold),#FFD700)}
+.ws-bar .fill.tone-low{background:linear-gradient(90deg,var(--red),#F87171)}
+.ws-bar .n{font-family:var(--font-mono);font-weight:700;text-align:right}
+.ws-bar .why{grid-column:1/-1;font-size:.75rem;color:var(--text-3);margin-top:-.2rem}
+.ws-decision{display:flex;gap:1rem;align-items:flex-start;padding:1rem 1.1rem;border-radius:14px;border:2px solid var(--line-gold);background:linear-gradient(135deg,rgba(255,215,0,.08),transparent)}
+.ws-decision.pursue{border-color:var(--green);background:linear-gradient(135deg,rgba(52,211,153,.1),transparent)}
+.ws-decision.ineligible,.ws-decision.deprioritize,.ws-decision.closed{border-color:var(--red);background:linear-gradient(135deg,rgba(248,113,113,.1),transparent)}
+.ws-decision strong{font-family:var(--font-display);font-size:1.08rem}
+.ws-decision ul{margin:.45rem 0 0 1.1rem;font-size:.86rem}
+
+/* tables */
+.ws-table-wrap{overflow-x:auto;border-radius:12px;border:1px solid var(--line)}
+.ws-table{width:100%;border-collapse:collapse;font-size:.86rem}
+.ws-table th{font-family:var(--font-cond);font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text-3);text-align:left;padding:.65rem .7rem;border-bottom:2px solid var(--line);background:var(--pill-bg);white-space:nowrap}
+.ws-table td{padding:.6rem .7rem;border-bottom:1px solid var(--divider);vertical-align:top}
+.ws-table tr:last-child td{border-bottom:none}
+.ws-table tbody tr:hover{background:var(--pill-bg)}
+.ws-table .num{font-family:var(--font-mono);font-weight:700;white-space:nowrap}
+.ws-table select{padding:.35rem .5rem;border-radius:8px;border:1px solid var(--line);background:var(--input-bg);color:var(--text);font-size:.8rem}
+.ws-link{background:none;border:none;color:var(--link);cursor:pointer;font:inherit;text-align:left;padding:0;text-decoration:underline;text-underline-offset:2px}
+.ws-empty{text-align:center;padding:2.4rem 1rem;color:var(--text-3)}
+
+/* extracted fields */
+.ws-fields{display:grid;gap:.8rem;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr))}
+.ws-fields .ws-field{margin:0;padding:.7rem;border-radius:12px;border:1px solid var(--line);background:var(--card)}
+.ws-fields .ws-label{display:flex;justify-content:space-between;gap:.4rem;align-items:center}
+.ws-req{display:grid;grid-template-columns:auto 1fr;gap:.25rem .6rem;padding:.45rem 0;border-bottom:1px dashed var(--divider);font-size:.84rem}
+.ws-req:last-child{border-bottom:none}
+.ws-req .tags{display:flex;gap:.25rem;flex-wrap:wrap;align-items:flex-start}
+
+/* claims */
+.ws-claim{display:flex;gap:.6rem;padding:.55rem .6rem;border-radius:10px;border:1px solid var(--line);margin-bottom:.4rem;background:var(--card)}
+.ws-claim .meta{display:flex;gap:.35rem;flex-wrap:wrap;margin-top:.25rem}
+.ws-claim .warn{color:var(--gold);font-size:.76rem}
+
+/* steps */
+.ws-steps{display:grid;gap:.6rem;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));margin:.4rem 0 1.2rem;counter-reset:s}
+.ws-step{counter-increment:s;padding:.8rem;border-radius:12px;border:1px solid var(--line);background:var(--card);text-align:left;cursor:pointer;color:var(--text);font:inherit}
+.ws-step:hover{border-color:var(--gold)}
+.ws-step b{display:block;font-family:var(--font-display);font-size:.95rem}
+.ws-step b::before{content:counter(s) ". ";color:var(--gold)}
+.ws-step span{font-size:.76rem;color:var(--text-3)}
+
+/* list */
+.ws-list{list-style:none}
+.ws-list li{display:flex;gap:.7rem;align-items:flex-start;justify-content:space-between;padding:.6rem 0;border-bottom:1px solid var(--divider);font-size:.88rem}
+.ws-list li:last-child{border-bottom:none}
+
+/* dialog */
+.ws-dialog{border:none;padding:0;border-radius:18px;width:min(940px,96vw);max-height:92vh;background:var(--card);color:var(--text);box-shadow:var(--shadow-2)}
+.ws-dialog::backdrop{background:rgba(5,8,22,.66);backdrop-filter:blur(3px)}
+.ws-dialog-head{position:sticky;top:0;z-index:2;display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1rem 1.2rem;border-bottom:1px solid var(--line);background:var(--card)}
+.ws-dialog-head h3{font-size:1.05rem}
+.ws-dialog-body{padding:1.1rem 1.2rem 1.4rem}
+.ws-x{width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:var(--pill-bg);color:var(--text);cursor:pointer;font-size:1.2rem;line-height:1}
+.ws-timeline{list-style:none;border-left:2px solid var(--line);margin-left:.4rem;padding-left:1rem}
+.ws-timeline li{position:relative;padding:.25rem 0 .55rem;font-size:.84rem}
+.ws-timeline li::before{content:'';position:absolute;left:-1.42rem;top:.55rem;width:10px;height:10px;border-radius:50%;background:var(--sky)}
+
+/* toast */
+.ws-toasts{position:fixed;left:50%;bottom:calc(1rem + env(safe-area-inset-bottom));transform:translateX(-50%);z-index:12000;display:flex;flex-direction:column;gap:.5rem;align-items:center;pointer-events:none}
+.ws-toast{pointer-events:auto;max-width:min(560px,92vw);padding:.7rem 1rem;border-radius:12px;background:var(--card);color:var(--text);border:1px solid var(--line-gold);box-shadow:var(--shadow-2);font-size:.88rem;animation:wsIn .25s var(--ease)}
+.ws-toast.bad{border-color:var(--red)}
+@keyframes wsIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.ws-toast{animation:none}}
+
+@media(max-width:640px){
+  .ws-grid.cols-4{grid-template-columns:1fr 1fr}
+  .ws-kpi strong{font-size:1.6rem}
+  .ws-bar{grid-template-columns:1fr 44px}
+  .ws-bar .track{grid-column:1/-1;order:3}
+}
+@media print{
+  .ws-tabs-wrap,.btn,.ws-toasts,.shl-header,.shl-footer{display:none!important}
+  .ws-panel[hidden]{display:block!important}
+  body{background:#fff;color:#000}
+  .ws-card{box-shadow:none;border:1px solid #999;background:#fff}
+}
+</style>
+<link rel="stylesheet" href="assets/css/app-shell.css">
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-user" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6.5 8-6.5s8 2.5 8 6.5"/></symbol>
+    <symbol id="i-bulb" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-4 10.5c.7.7 1 1.5 1 2.5h6c0-1 .3-1.8 1-2.5A6 6 0 0 0 12 3z"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.2 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></symbol>
+    <symbol id="i-book" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 19V5a2 2 0 0 1 2-2h13v16H6.5A2.5 2.5 0 0 0 4 21.5 2.5 2.5 0 0 0 6.5 19H19"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14m-6-6 6 6-6 6"/></symbol>
+    <symbol id="i-back" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M19 12H5m6 6-6-6 6-6"/></symbol>
+    <symbol id="i-chart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 20V6m0 14h16M8 16v-5m4 5V8m4 8v-3"/></symbol>
+    <symbol id="i-target" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.4" fill="currentColor"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 3l8 3v6c0 4.5-3.2 7.7-8 9-4.8-1.3-8-4.5-8-9V6z"/><path d="M9 12l2 2 4-4"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M4 12.5l5 5L20 6.5"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></symbol>
+    <symbol id="i-file" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M14 2H7a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7z"/><path d="M14 2v5h5M9 13h6M9 17h4"/></symbol>
+    <symbol id="i-in" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></symbol>
+    <symbol id="i-fb" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.3M12 19.2v2.3M4.6 4.6l1.6 1.6M17.8 17.8l1.6 1.6M2.5 12h2.3M19.2 12h2.3M4.6 19.4l1.6-1.6M17.8 6.2l1.6-1.6"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></symbol>
+    <symbol id="i-trash" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></symbol>
+    <symbol id="i-clipboard" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></symbol>
+  </defs>
+</svg>
+
+<main id="main" data-asilva-career>
+
+<!-- ============ HERO ============ -->
+<section class="ws-hero" aria-labelledby="wsTitle">
+  <div class="wrap ws-hero-inner">
+    <a class="ws-crumb" href="index.html"><svg aria-hidden="true"><use href="#i-back"/></svg> Home <span aria-hidden="true">›</span> Career workspace</a>
+    <p class="kicker">Private workspace · Alvin M. Silva, MDM</p>
+    <h1 id="wsTitle">Career Intelligence &amp; <span class="grad-text">Opportunity Management</span></h1>
+    <p>Discover, understand, position, prepare, manage and develop. Assessments are rules-based and explainable — computed from <code>credentials.json</code>, not generated by AI — and every score shows its reasoning and evidence level. Mandatory and legal eligibility is always yours to confirm against the source posting.</p>
+    <div class="ws-status" role="status" aria-live="polite">
+      <span class="ws-chip info" id="wsDataStatus">Loading credentials…</span>
+      <span class="ws-chip" id="wsStoreStatus">Records: this browser</span>
+      <span class="ws-chip" id="wsModelStatus">Model —</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TABS ============ -->
+<div class="ws-tabs-wrap">
+  <div class="wrap">
+    <div class="ws-tabs" role="tablist" aria-label="Career workspace sections" id="wsTabs">
+      <button class="ws-tab" role="tab" id="tab-overview" aria-controls="ws-overview" aria-selected="true" data-tab="overview">Overview</button>
+      <button class="ws-tab" role="tab" id="tab-discover" aria-controls="ws-discover" aria-selected="false" tabindex="-1" data-tab="discover">Discover</button>
+      <button class="ws-tab" role="tab" id="tab-assess" aria-controls="ws-assess" aria-selected="false" tabindex="-1" data-tab="assess">Assess</button>
+      <button class="ws-tab" role="tab" id="tab-applications" aria-controls="ws-applications" aria-selected="false" tabindex="-1" data-tab="applications">Applications <span class="ws-count" data-count="applications">0</span></button>
+      <button class="ws-tab" role="tab" id="tab-evidence" aria-controls="ws-evidence" aria-selected="false" tabindex="-1" data-tab="evidence">Evidence</button>
+      <button class="ws-tab" role="tab" id="tab-development" aria-controls="ws-development" aria-selected="false" tabindex="-1" data-tab="development">Development <span class="ws-count" data-count="development">0</span></button>
+      <button class="ws-tab" role="tab" id="tab-analytics" aria-controls="ws-analytics" aria-selected="false" tabindex="-1" data-tab="analytics">Analytics</button>
+      <button class="ws-tab" role="tab" id="tab-settings" aria-controls="ws-settings" aria-selected="false" tabindex="-1" data-tab="settings">Settings &amp; data</button>
+    </div>
+  </div>
+</div>
+
+<noscript><div class="wrap"><p class="ws-note bad">The career workspace needs JavaScript. Your records are stored in this browser and are processed locally.</p></div></noscript>
+
+<!-- ============ OVERVIEW ============ -->
+<section class="ws-panel" id="ws-overview" role="tabpanel" aria-labelledby="tab-overview" tabindex="0">
+  <div class="wrap">
+    <h2>Overview</h2>
+    <p class="ws-lead">Your pipeline at a glance, and what needs attention next.</p>
+    <div class="ws-grid cols-4" id="wsKpis" aria-live="polite"></div>
+    <div class="ws-steps" aria-label="Workflow">
+      <button class="ws-step" type="button" data-goto="discover"><b>Discover</b><span>Find opportunities across development sectors</span></button>
+      <button class="ws-step" type="button" data-goto="assess"><b>Understand</b><span>Requirements, eligibility and alignment</span></button>
+      <button class="ws-step" type="button" data-goto="assess" data-anchor="wsPositioning"><b>Position</b><span>Pathway and differentiating evidence</span></button>
+      <button class="ws-step" type="button" data-goto="assess" data-anchor="wsLetterCard"><b>Prepare</b><span>Evidence-backed CV choice and letter</span></button>
+      <button class="ws-step" type="button" data-goto="applications"><b>Manage</b><span>Deadlines, follow-ups and interviews</span></button>
+      <button class="ws-step" type="button" data-goto="development"><b>Develop</b><span>Close competency and evidence gaps</span></button>
+    </div>
+    <div class="ws-grid cols-2">
+      <div class="ws-card">
+        <h3><svg aria-hidden="true"><use href="#i-target"/></svg> Next actions</h3>
+        <ul class="ws-list" id="wsNext"></ul>
+        <div class="ws-row" style="margin-top:.8rem">
+          <button class="btn btn-ghost btn-sm" type="button" data-action="notify-enable" id="wsNotifyBtn">Enable deadline reminders</button>
+          <span class="ws-small">Reminders appear when this page is opened; there is no background push without the backend.</span>
+        </div>
+      </div>
+      <div class="ws-card">
+        <h3><svg aria-hidden="true"><use href="#i-chart"/></svg> Pipeline</h3>
+        <div id="wsPipelineMini"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DISCOVER ============ -->
+<section class="ws-panel" id="ws-discover" role="tabpanel" aria-labelledby="tab-discover" tabindex="0" hidden>
+  <div class="wrap">
+    <h2>Discover</h2>
+    <p class="ws-lead">A curated source registry and a quick capture for opportunities you find. Automated scanning of job boards is not running — it needs the server-side retrieval service (see Settings).</p>
+    <div class="ws-grid cols-2">
+      <div class="ws-card">
+        <h3><svg aria-hidden="true"><use href="#i-book"/></svg> Source registry</h3>
+        <div id="wsSources"></div>
+        <h4>Add a source</h4>
+        <form class="ws-row" id="wsSourceForm" autocomplete="off">
+          <label class="sr-only" for="wsSrcName">Source name</label>
+          <input class="ws-input grow" id="wsSrcName" name="name" placeholder="Source name" required maxlength="80">
+          <label class="sr-only" for="wsSrcUrl">Source URL</label>
+          <input class="ws-input grow" id="wsSrcUrl" name="url" type="url" placeholder="https://…" required>
+          <button class="btn btn-ghost btn-sm" type="submit">Add</button>
+        </form>
+      </div>
+      <div class="ws-card">
+        <h3><svg aria-hidden="true"><use href="#i-star"/></svg> Log a discovered opportunity</h3>
+        <form id="wsCaptureForm" autocomplete="off">
+          <div class="ws-field"><label class="ws-label" for="wsCapTitle">Position</label><input class="ws-input" id="wsCapTitle" name="title" required maxlength="160"></div>
+          <div class="ws-field"><label class="ws-label" for="wsCapOrg">Organization</label><input class="ws-input" id="wsCapOrg" name="organization" required maxlength="160"></div>
+          <div class="ws-grid cols-2">
+            <div class="ws-field"><label class="ws-label" for="wsCapUrl">Posting URL</label><input class="ws-input" id="wsCapUrl" name="url" type="url" placeholder="https://…"></div>
+            <div class="ws-field"><label class="ws-label" for="wsCapDeadline">Deadline</label><input class="ws-input" id="wsCapDeadline" name="deadline" type="date"></div>
+          </div>
+          <div class="ws-row"><button class="btn btn-primary btn-sm" type="submit">Add to pipeline</button><span class="ws-small">Saved as “Discovered”. Assess it when you have the full text.</span></div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ASSESS ============ -->
+<section class="ws-panel" id="ws-assess" role="tabpanel" aria-labelledby="tab-assess" tabindex="0" hidden>
+  <div class="wrap">
+    <h2>Assess an opportunity</h2>
+    <p class="ws-lead">Paste the full posting or terms of reference. Validate what was extracted, then review eligibility, the three scores and the evidence behind them.</p>
+
+    <div class="ws-card" id="wsInputCard">
+      <h3><svg aria-hidden="true"><use href="#i-file"/></svg> 1 · Posting</h3>
+      <div class="ws-field">
+        <label class="ws-label" for="wsUrl">Posting URL (optional)</label>
+        <div class="ws-row">
+          <input class="ws-input grow" type="url" id="wsUrl" placeholder="https://careers.example.org/job/12345" inputmode="url">
+          <button class="btn btn-ghost btn-sm" type="button" data-action="fetch-url" id="wsFetchBtn">Fetch text</button>
+        </div>
+        <p class="ws-small" id="wsFetchNote">Most job sites block in-browser retrieval. Configure the retrieval service in Settings, or paste the text below.</p>
+      </div>
+      <div class="ws-field">
+        <label class="ws-label" for="wsText">Posting text</label>
+        <textarea class="ws-textarea" id="wsText" rows="10" placeholder="Paste the full job description: title, organization, responsibilities, qualifications (required and desirable), location, deadline and how to apply."></textarea>
+        <p class="ws-small"><span id="wsTextCount">0</span> words · the text is processed in this browser.</p>
+      </div>
+      <div class="ws-row">
+        <button class="btn btn-primary" type="button" data-action="analyze" id="wsAnalyzeBtn"><span>Analyze</span><svg aria-hidden="true"><use href="#i-arrow"/></svg></button>
+        <button class="btn btn-ghost btn-sm" type="button" data-action="clear-assess">Clear</button>
+        <span class="ws-small" id="wsAssessContext"></span>
+      </div>
+    </div>
+
+    <div id="wsResults" hidden>
+      <div class="ws-card" id="wsExtractCard">
+        <h3><svg aria-hidden="true"><use href="#i-target"/></svg> 2 · Validate extracted details <span class="ws-badge" id="wsExtractConf"></span></h3>
+        <p class="ws-small">Correct anything wrong, then re-assess. Edited fields are marked “user” and recorded with the assessment.</p>
+        <form id="wsFieldsForm" class="ws-fields" autocomplete="off"></form>
+        <div class="ws-row" style="margin-top:.8rem"><button class="btn btn-primary btn-sm" type="button" data-action="reassess">Re-assess with corrections</button></div>
+        <details style="margin-top:1rem"><summary class="ws-link" style="text-decoration:none">Requirement statements detected (<span id="wsReqCount">0</span>)</summary><div id="wsReqs" style="margin-top:.6rem"></div></details>
+      </div>
+
+      <div class="ws-card">
+        <h3><svg aria-hidden="true"><use href="#i-chart"/></svg> 3 · Assessment</h3>
+        <div id="wsDecision"></div>
+        <div class="ws-scores" id="wsScores"></div>
+        <div class="ws-grid cols-2">
+          <div><h4>Eligibility checks</h4><div id="wsElig"></div></div>
+          <div><h4>A · Professional alignment — breakdown</h4><div id="wsAlign"></div></div>
+        </div>
+        <div class="ws-grid cols-2">
+          <div><h4>B · Application feasibility</h4><div id="wsFeas"></div></div>
+          <div><h4>C · Career value</h4><div id="wsValue"></div></div>
+        </div>
+      </div>
+
+      <div class="ws-grid cols-2">
+        <div class="ws-card">
+          <h3><svg aria-hidden="true"><use href="#i-shield"/></svg> Required competencies &amp; evidence</h3>
+          <div id="wsComps"></div>
+        </div>
+        <div class="ws-card">
+          <h3><svg aria-hidden="true"><use href="#i-bulb"/></svg> Gaps — competency, evidence, credential, eligibility</h3>
+          <div id="wsGaps"></div>
+        </div>
+      </div>
+
+      <div class="ws-card" id="wsPositioning">
+        <h3><svg aria-hidden="true"><use href="#i-user"/></svg> Positioning &amp; documents</h3>
+        <div class="ws-grid cols-2">
+          <div><h4>Career pathway</h4><div id="wsPath"></div><h4>Portfolio evidence to feature</h4><div id="wsProjects"></div></div>
+          <div><h4>Ranked CV shortlist</h4><div id="wsCvs"></div></div>
+        </div>
+      </div>
+
+      <div class="ws-card" id="wsLetterCard">
+        <h3><svg aria-hidden="true"><use href="#i-mail"/></svg> Evidence-backed letter</h3>
+        <p class="ws-small">The letter is composed only from the claims you select. Each claim shows its source and evidence level. Inferred and unverified claims are off by default.</p>
+        <div class="ws-grid cols-2">
+          <div><h4>Claims</h4><div id="wsClaims"></div></div>
+          <div>
+            <h4>Draft</h4>
+            <div class="ws-row" style="margin-bottom:.6rem">
+              <label class="ws-small" for="wsTone">Tone</label>
+              <select class="ws-select" id="wsTone" style="width:auto"><option value="formal">Formal</option><option value="concise">Concise</option></select>
+              <label class="ws-check"><input type="checkbox" id="wsAckGaps"> Acknowledge the main gap</label>
+            </div>
+            <label class="sr-only" for="wsLetter">Letter draft</label>
+            <textarea class="ws-textarea" id="wsLetter" rows="18"></textarea>
+            <div class="ws-row" style="margin-top:.6rem">
+              <button class="btn btn-ghost btn-sm" type="button" data-action="copy-letter"><svg aria-hidden="true"><use href="#i-clipboard"/></svg><span>Copy</span></button>
+              <button class="btn btn-ghost btn-sm" type="button" data-action="download-letter"><svg aria-hidden="true"><use href="#i-download"/></svg><span>Download .txt</span></button>
+            </div>
+          </div>
+        </div>
+        <div class="ws-row end" style="margin-top:1rem;border-top:1px solid var(--divider);padding-top:1rem">
+          <span class="ws-small" id="wsSaveNote"></span>
+          <button class="btn btn-primary" type="button" data-action="save-opportunity" id="wsSaveBtn"><svg aria-hidden="true"><use href="#i-star"/></svg><span>Save to pipeline</span></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ APPLICATIONS ============ -->
+<section class="ws-panel" id="ws-applications" role="tabpanel" aria-labelledby="tab-applications" tabindex="0" hidden>
+  <div class="wrap">
+    <h2>Applications</h2>
+    <p class="ws-lead">Every saved opportunity, its stage, deadline and scores. Open a record to manage documents, contacts, follow-ups, interviews and outcome.</p>
+    <div class="ws-card">
+      <div class="ws-row" style="margin-bottom:.9rem">
+        <label class="sr-only" for="wsAppSearch">Search</label>
+        <input class="ws-input grow" id="wsAppSearch" type="search" placeholder="Search organization or position">
+        <label class="sr-only" for="wsAppStatus">Status filter</label>
+        <select class="ws-select" id="wsAppStatus" style="width:auto"><option value="active">Active</option><option value="all">All</option><option value="closed">Closed</option></select>
+        <label class="sr-only" for="wsAppSort">Sort</label>
+        <select class="ws-select" id="wsAppSort" style="width:auto"><option value="deadline">Deadline</option><option value="updated">Last updated</option><option value="alignment">Alignment</option><option value="value">Career value</option></select>
+      </div>
+      <div id="wsApps"></div>
+      <div class="ws-row" style="margin-top:.9rem">
+        <button class="btn btn-ghost btn-sm" type="button" data-action="export-csv"><svg aria-hidden="true"><use href="#i-download"/></svg><span>Export CSV</span></button>
+        <button class="btn btn-ghost btn-sm" type="button" data-action="export-json"><svg aria-hidden="true"><use href="#i-download"/></svg><span>Export JSON backup</span></button>
+        <button class="btn btn-ghost btn-sm" type="button" data-action="export-ics-all">Deadlines → calendar (.ics)</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EVIDENCE ============ -->
+<section class="ws-panel" id="ws-evidence" role="tabpanel" aria-labelledby="tab-evidence" tabindex="0" hidden>
+  <div class="wrap">
+    <h2>Professional evidence</h2>
+    <p class="ws-lead">What the assessments can draw on, read live from <code>credentials.json</code>. Evidence levels: <span class="ws-badge verified">Verified</span> <span class="ws-badge documented">Documented</span> <span class="ws-badge self-reported">Self-reported</span> <span class="ws-badge inferred">Inferred</span>.</p>
+    <div class="ws-card"><h3><svg aria-hidden="true"><use href="#i-shield"/></svg> Data quality</h3><div id="wsQuality"></div></div>
+    <div class="ws-card"><h3><svg aria-hidden="true"><use href="#i-chart"/></svg> Competency strength</h3><p class="ws-small">Strength combines the number and quality of evidence records; expired credentials and keyword-only links count little or nothing.</p><div id="wsStrength"></div></div>
+    <div class="ws-card">
+      <h3><svg aria-hidden="true"><use href="#i-book"/></svg> Evidence records</h3>
+      <div class="ws-row" style="margin-bottom:.8rem">
+        <label class="sr-only" for="wsEvKind">Record type</label>
+        <select class="ws-select" id="wsEvKind" style="width:auto"><option value="">All types</option><option value="project">Projects</option><option value="certification">Certifications</option><option value="training">Training</option><option value="membership">Memberships</option><option value="appointment">Appointments</option><option value="publication">Publications</option><option value="discipline">Disciplines</option><option value="degree">Degrees</option></select>
+        <label class="sr-only" for="wsEvComp">Competency</label>
+        <select class="ws-select" id="wsEvComp" style="width:auto"><option value="">All competencies</option></select>
+      </div>
+      <div id="wsEvidence"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DEVELOPMENT ============ -->
+<section class="ws-panel" id="ws-development" role="tabpanel" aria-labelledby="tab-development" tabindex="0" hidden>
+  <div class="wrap">
+    <h2>Development roadmap</h2>
+    <p class="ws-lead">Gaps become actions. An <strong>evidence gap</strong> (you have the competency but it is not documented) calls for documentation, not a course; a <strong>competency gap</strong> calls for development.</p>
+    <div class="ws-card"><h3><svg aria-hidden="true"><use href="#i-bulb"/></svg> Recurring gaps across saved opportunities</h3><div id="wsRecurring"></div></div>
+    <div class="ws-card"><h3><svg aria-hidden="true"><use href="#i-target"/></svg> Plan</h3><div id="wsPlan"></div></div>
+  </div>
+</section>
+
+<!-- ============ ANALYTICS ============ -->
+<section class="ws-panel" id="ws-analytics" role="tabpanel" aria-labelledby="tab-analytics" tabindex="0" hidden>
+  <div class="wrap">
+    <h2>Career analytics</h2>
+    <p class="ws-lead">Counts, conversion rates with their denominators, and time indicators from your own records. Small numbers are flagged — treat them as signals, not conclusions. A rejection is not proof that a score was wrong.</p>
+    <div id="wsAnalytics"></div>
+  </div>
+</section>
+
+<!-- ============ SETTINGS ============ -->
+<section class="ws-panel" id="ws-settings" role="tabpanel" aria-labelledby="tab-settings" tabindex="0" hidden>
+  <div class="wrap">
+    <h2>Settings &amp; data</h2>
+    <p class="ws-lead">Career direction, privacy and retention, the optional private backend, and your data.</p>
+    <div class="ws-grid cols-2">
+      <div class="ws-card"><h3><svg aria-hidden="true"><use href="#i-target"/></svg> Career direction</h3><p class="ws-small">How much you want each pathway (1 = avoid, 5 = top priority). Used for the strategic-direction and career-value scores.</p><form id="wsPathForm"></form></div>
+      <div class="ws-card">
+        <h3><svg aria-hidden="true"><use href="#i-shield"/></svg> Privacy &amp; retention</h3>
+        <form id="wsPrivacyForm">
+          <label class="ws-check"><input type="checkbox" name="storeSourceText"> Keep the posting text with saved records (needed to re-assess later)</label>
+          <label class="ws-check"><input type="checkbox" name="storeLetters"> Keep letter drafts with saved records</label>
+          <div class="ws-grid cols-2" style="margin-top:.7rem">
+            <div class="ws-field"><label class="ws-label" for="wsRetention">Purge closed records’ text after (days, 0 = never)</label><input class="ws-input" id="wsRetention" name="retentionDays" type="number" min="0" max="3650"></div>
+            <div class="ws-field"><label class="ws-label" for="wsNotifyDays">Deadline window (days)</label><input class="ws-input" id="wsNotifyDays" name="notifyDays" type="number" min="1" max="60"></div>
+          </div>
+          <button class="btn btn-ghost btn-sm" type="submit">Save</button>
+        </form>
+      </div>
+      <div class="ws-card">
+        <h3><svg aria-hidden="true"><use href="#i-shield"/></svg> Private backend (optional)</h3>
+        <p class="ws-small">Supabase Auth + Postgres with row-level security, and the <code>job-extract</code> retrieval function. Files: <code>supabase/</code> in this repository. Leave empty to keep everything in this browser.</p>
+        <form id="wsSyncForm" autocomplete="off">
+          <div class="ws-field"><label class="ws-label" for="wsSbUrl">Project URL</label><input class="ws-input" id="wsSbUrl" name="url" placeholder="https://xxxx.supabase.co"></div>
+          <div class="ws-field"><label class="ws-label" for="wsSbKey">Anon (publishable) key</label><input class="ws-input" id="wsSbKey" name="anonKey" placeholder="eyJ…"></div>
+          <div class="ws-field"><label class="ws-label" for="wsSbExtract">Retrieval endpoint (optional override)</label><input class="ws-input" id="wsSbExtract" name="extractEndpoint" placeholder="defaults to {project}/functions/v1/job-extract"></div>
+          <button class="btn btn-ghost btn-sm" type="submit">Save configuration</button>
+        </form>
+        <h4>Account</h4>
+        <p class="ws-small" id="wsSyncState"></p>
+        <form class="ws-row" id="wsSignInForm" autocomplete="on">
+          <label class="sr-only" for="wsSignEmail">E-mail</label>
+          <input class="ws-input grow" id="wsSignEmail" type="email" name="email" placeholder="your account e-mail" autocomplete="email">
+          <button class="btn btn-primary btn-sm" type="submit">Send sign-in link</button>
+        </form>
+        <div class="ws-row" style="margin-top:.6rem"><button class="btn btn-ghost btn-sm" type="button" data-action="sync-now">Sync now</button><button class="btn btn-ghost btn-sm" type="button" data-action="sign-out">Sign out</button></div>
+      </div>
+      <div class="ws-card">
+        <h3><svg aria-hidden="true"><use href="#i-download"/></svg> Your data</h3>
+        <p class="ws-small" id="wsUsage"></p>
+        <div class="ws-row">
+          <button class="btn btn-ghost btn-sm" type="button" data-action="export-json">Export JSON backup</button>
+          <button class="btn btn-ghost btn-sm" type="button" data-action="export-csv">Export CSV</button>
+          <label class="btn btn-ghost btn-sm" for="wsImport" style="cursor:pointer">Import JSON</label>
+          <input type="file" id="wsImport" accept="application/json,.json" class="sr-only">
+        </div>
+        <div id="wsLegacy"></div>
+        <h4>Credentials source</h4>
+        <div id="wsSourceInfo"></div>
+        <div class="ws-row" style="margin-top:.6rem"><button class="btn btn-ghost btn-sm" type="button" data-action="reload-data">Reload credentials.json</button></div>
+        <h4>Danger zone</h4>
+        <button class="btn btn-danger btn-sm" type="button" data-action="clear-all"><svg aria-hidden="true"><use href="#i-trash"/></svg><span>Delete all records in this browser</span></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<dialog class="ws-dialog" id="wsDialog" aria-labelledby="wsDialogTitle">
+  <div class="ws-dialog-head"><h3 id="wsDialogTitle">Record</h3><button class="ws-x" type="button" data-action="dialog-close" aria-label="Close">×</button></div>
+  <div class="ws-dialog-body" id="wsDialogBody"></div>
+</dialog>
+<div class="ws-toasts" id="wsToasts" aria-live="polite" aria-atomic="false"></div>
+
+<!-- The workspace is a registered platform module: boot.js loads
+     career-engine.js, career-store.js and career-workspace.js because this
+     page has a [data-asilva-career] mount. No other script tags. -->
+<script src="assets/js/boot.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Disallow: /career-automation.html
+Disallow: /form-assistant-setup.html
+Disallow: /pds.html
+Disallow: /tools/
+
+Sitemap: https://alvin-silva.asilvainnovations.com/sitemap.xml
